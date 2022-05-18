@@ -71,6 +71,13 @@ export class ProduitsComponent implements OnInit {
     })
   }
 
+  onChangeSelectdest(value) {
+    this.service.findAllBydest(value.description,this.currentPage,this.size).subscribe(data =>{
+      this.products=data ;
+    },error=>{
+      console.log(error);
+    })
+  }
 
   getCategory(href:string){
     return this.service.getCategoryOfProduct(href).subscribe(c =>{

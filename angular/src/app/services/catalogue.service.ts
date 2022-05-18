@@ -36,6 +36,15 @@ export class CatalogueService {
   public findCategory(id:number) :Observable<Category>{
     return this.httpClient.get<Category>(this.host + "categories/"+id);
   }
+  public findAllBydest(description: string, page: number, size: number) : Observable<Product>{
+    return this.httpClient.get<Product>(this.host + "products/search/designation?desc=" + description + "&page=" + page + "&size=" + size);
+  }
+  public findAllDEST() :Observable<Product>{
+    return this.httpClient.get<Product>(this.host + "products/destination");
+  }
+  public findDEST(description:string) :Observable<Product>{
+    return this.httpClient.get<Product>(this.host + "products/destination/"+description);
+  }
 
   public postData(value)  {
     return this.httpClient.post(this.host+"products",value);
